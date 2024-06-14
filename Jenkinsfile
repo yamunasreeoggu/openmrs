@@ -21,7 +21,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sshagent(['SSH_KEY']) {
+                sshagent(['SSH_KEY_OPENMRS']) {
                   sh "scp  -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/openmrs/webapp/target/openmrs.war ec2-user@${EC2_INSTANCE}:/opt/apache-tomcat-8.5.100/webapps/"
                 }
             }
